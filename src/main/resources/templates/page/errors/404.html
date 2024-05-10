@@ -1,0 +1,18 @@
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{common/layouts/error}">
+
+    <th:block layout:fragment="Content">
+        <!-- #error-page -->
+        <div id="error-page">
+            <strong class="hb1">페이지를 찾을 수 없어요!</strong>
+            <p>
+                찾으시는 주소의 페이지가 사라졌거나 변경,<span class="br-forMobile"></span> 삭제 되어 찾을 수 없어요.<br />
+                주소를 다시 확인해주세요.
+            </p>
+            <i class="ic1"></i>
+        </div>
+        <!-- /#error-page -->
+    </th:block>
+</html>

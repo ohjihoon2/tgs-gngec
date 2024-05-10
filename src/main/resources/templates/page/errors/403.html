@@ -1,0 +1,18 @@
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{common/layouts/error}">
+
+    <th:block layout:fragment="Content">
+        <!-- #error-page -->
+        <div id="error-page">
+            <strong class="hb1">접근이 거부되었습니다!</strong>
+            <p>
+                요청하신 페이지 접근이 거부되었습니다.<br />
+                입력하신 페이지의 주소가 정확한지<span class="br-forMobile"></span> 다시 한번 확인해주시기 바랍니다.<br />
+            </p>
+            <i class="ic1"></i>
+        </div>
+        <!-- /#error-page -->
+    </th:block>
+</html>
