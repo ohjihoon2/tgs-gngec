@@ -14,6 +14,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
@@ -23,8 +24,10 @@ public class SecurityConfig {
     private final LoginService loginService;
     private final AuthenticationConfiguration authenticationConfiguration;
 
-
-
+    @Bean
+    public CustomAuthenticationEntryPoint customAuthenticationEntryPoint(){
+        return new CustomAuthenticationEntryPoint();
+    }
     @Bean
     public CustomAuthenticationFailureHandler customAuthenticationFailureHandler(){
         return new CustomAuthenticationFailureHandler();
@@ -64,32 +67,48 @@ public class SecurityConfig {
         http
                 .authorizeHttpRequests((auth) -> auth
                         .requestMatchers("/admin/login").permitAll()
-                        .requestMatchers("/admin/**").authenticated()
+                        .requestMatchers("/admin/**").hasRole("ADMIN")
                         .anyRequest().permitAll());
 
         http.formLogin(login ->
-                        login.loginPage("/login/login")
+                        login.loginPage("/login")
                                 .usernameParameter("username")
                                 .passwordParameter("password")
                                 .loginProcessingUrl("/loginProcess")
+                                .successHandler(customAuthenticationSuccessHandler())
+                                .failureHandler(customAuthenticationFailureHandler())
                         .permitAll()// 혹시라도 로그인이 권한에 막히거나 그럴 수 있으니 permitAll을 걸어둔다.
         );
 
-        http
-                .addFilterBefore(customAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
+        http.
+                logout((logout) ->
+                        logout
+                            .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                            .logoutSuccessUrl("/login")
+                            .invalidateHttpSession(true));
 
-        //token을 사용하는 방식이기 때문에 csrf를 disable.
-        http
-                .csrf((csrf) -> csrf.disable());
-
-        http
-                .headers((frameOption)->frameOption.disable());
 
         /**
          * 권한이 없는 사용자가 접근했을 경우 이동할 경로
          */
         http.
-                exceptionHandling((access) -> access.accessDeniedHandler(customAccessDeniedHandler()));
+                exceptionHandling((access) ->
+                        access
+                                .accessDeniedHandler(customAccessDeniedHandler())
+                                .authenticationEntryPoint(customAuthenticationEntryPoint())
+
+                );
+
+        http
+                .addFilterBefore(customAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
+
+        //TODO
+        http
+                .csrf((csrf) -> csrf.disable());
+
+        // H2 콘솔(iframe)을 사용하기 때문에 비활성화
+        http
+                .headers((frameOption)->frameOption.disable());
 
         return http.build();
     }
@@ -98,8 +117,8 @@ public class SecurityConfig {
     public CustomAuthenticationFilter customAuthenticationFilter() throws Exception {
         CustomAuthenticationFilter customAuthenticationFilter = new CustomAuthenticationFilter();
         customAuthenticationFilter.setAuthenticationManager(authenticationManager());
-        customAuthenticationFilter.setAuthenticationSuccessHandler(customAuthenticationSuccessHandler());
-        customAuthenticationFilter.setAuthenticationFailureHandler(customAuthenticationFailureHandler());
+//        customAuthenticationFilter.setAuthenticationSuccessHandler(customAuthenticationSuccessHandler());
+//        customAuthenticationFilter.setAuthenticationFailureHandler(customAuthenticationFailureHandler());
         customAuthenticationFilter.afterPropertiesSet();
 
         return customAuthenticationFilter;

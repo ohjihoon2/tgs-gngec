@@ -20,9 +20,9 @@ public class AdminServiceImpl implements AdminService {
 
 
         Users user = Users.builder()
-                .username("test")
+                .username("user")
                 .password(passwordEncoder.encode(("1234")))
-                .role("ADMIN")
+                .role("USER")
                 .build();
 
 

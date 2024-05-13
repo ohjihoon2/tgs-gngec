@@ -1,6 +1,5 @@
 package io.tgsinc.tgsgngec.controller.domain.admin.repository;
 
-import io.tgsinc.tgsgngec.controller.domain.admin.dto.UserDTO;
 import io.tgsinc.tgsgngec.controller.domain.admin.entity.Users;
 import org.springframework.data.jpa.repository.JpaRepository;
 

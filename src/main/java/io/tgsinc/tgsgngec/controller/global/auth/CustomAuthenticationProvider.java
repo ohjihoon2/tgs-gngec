@@ -27,11 +27,9 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
      */
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-        System.out.println("CustomAuthenticationProvider.authenticate");
         //username / password 가 유효한지 검사
 
         final String username = (authentication.getPrincipal() == null) ? "NONE_PROVIDED" : authentication.getName();
-        System.out.println("username = " + username);
         // 1. username null check
         if (ObjectUtils.isEmpty(username)) {
             throw new BadCredentialsException("invalid login details");

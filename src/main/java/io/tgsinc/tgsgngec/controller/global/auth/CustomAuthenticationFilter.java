@@ -22,7 +22,6 @@ public class CustomAuthenticationFilter extends AbstractAuthenticationProcessing
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
-        System.out.println("CustomAuthenticationFilter.attemptAuthentication");
         UsernamePasswordAuthenticationToken authRequest = new UsernamePasswordAuthenticationToken(request.getParameter("username"), request.getParameter("password"));
         setDetails(request, authRequest);
         return this.getAuthenticationManager().authenticate(authRequest);

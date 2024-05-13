@@ -17,6 +17,11 @@ public class AdminController {
         return "/admin/main";
     }
 
+    @GetMapping("/admin/test")
+    public String adminTest(){
+        return "/admin/test";
+    }
+
     @PostMapping("/add")
     public void add(){
 
