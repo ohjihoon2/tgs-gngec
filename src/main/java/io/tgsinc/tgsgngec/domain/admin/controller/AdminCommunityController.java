@@ -5,16 +5,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/admin/develop")
-public class AdmDevelopController {
-
+@RequestMapping("/admin/cmmnity")
+public class AdminCommunityController {
 
     /**
-     * 관리자 페이지 - 
+     * 관리자 페이지 커뮤니티 탭
      * @return
      */
     @GetMapping("")
-    public String admDevelop(){
-        return "/page/user/develop/index";
+    public String adminCommunity(){
+        return "/page/admin/community/index";
     }
+
 }

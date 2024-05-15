@@ -25,6 +25,6 @@ class AdmTestControllerTest {
         paramMap.put("pswd", "1234");
         paramMap.put("role", "ADMIN");
 
-        adminService.addAdmin(paramMap);
+        adminService.addUser(paramMap);
     }
 }

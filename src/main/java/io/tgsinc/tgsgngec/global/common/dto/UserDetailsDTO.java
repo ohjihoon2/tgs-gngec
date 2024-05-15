@@ -1,6 +1,6 @@
-package io.tgsinc.tgsgngec.domain.admin.dto;
+package io.tgsinc.tgsgngec.global.common.dto;
 
-import io.tgsinc.tgsgngec.domain.admin.entity.Users;
+import io.tgsinc.tgsgngec.global.common.entity.UsersEntity;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -11,10 +11,10 @@ import java.util.Collection;
 @Data
 public class UserDetailsDTO implements UserDetails {
 
-    private Users user;
+    private UsersEntity user;
 
-    public UserDetailsDTO(Users users) {
-        this.user = users;
+    public UserDetailsDTO(UsersEntity usersEntity) {
+        this.user = usersEntity;
     }
 
 

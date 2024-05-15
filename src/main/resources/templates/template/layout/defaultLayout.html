@@ -4,18 +4,18 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
 <!--공통 JS / CSS 영역을 관리 영역-->
-<head th:replace="~{template/fragment/config :: defaultConfig}">
+<head th:replace="~{template/fragment/config :: DefaultConfig}">
 
 </head>
 
 <body>
 <!--header 영역을 참조-->
-<header th:replace="~{template/fragment/header :: defaultHeader}"></header>
+<header th:replace="~{template/fragment/header :: DefaultHeader}"></header>
 
-<!--content 내용 영역을 참조합니다-->
-<th:block layout:fragment="content"></th:block>
+<!--Content 내용 영역을 참조합니다-->
+<th:block layout:fragment="Content"></th:block>
 
 <!--Footer 영역을 참조합니다.-->
-<footer th:replace="~{template/fragment/footer :: defaultFooter}"></footer>
+<footer th:replace="~{template/fragment/footer :: DefaultFooter}"></footer>
 </body>
 </html>

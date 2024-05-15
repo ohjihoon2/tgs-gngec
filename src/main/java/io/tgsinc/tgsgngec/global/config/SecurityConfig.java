@@ -1,6 +1,6 @@
 package io.tgsinc.tgsgngec.global.config;
 
-import io.tgsinc.tgsgngec.domain.admin.service.LoginService;
+import io.tgsinc.tgsgngec.global.common.service.LoginService;
 import io.tgsinc.tgsgngec.global.auth.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;

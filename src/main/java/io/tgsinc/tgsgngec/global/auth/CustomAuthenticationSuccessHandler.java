@@ -1,6 +1,6 @@
 package io.tgsinc.tgsgngec.global.auth;
 
-import io.tgsinc.tgsgngec.domain.admin.service.LoginService;
+import io.tgsinc.tgsgngec.global.common.service.LoginService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -25,6 +25,8 @@ public class CustomAuthenticationSuccessHandler extends SavedRequestAwareAuthent
         //로그인 성공 후 작업
         HttpSession session = request.getSession();
         session.setAttribute("username", username);
+
+        // TODO 추가적으로 Session 에 넣을 수 있음.
 
         response.sendRedirect("/");
 

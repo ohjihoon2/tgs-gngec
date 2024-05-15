@@ -12,12 +12,23 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Slf4j
 public class CmmController {
 
+    /**
+     * 로그인
+     * @param model
+     * @return
+     */
     @GetMapping("/login")
     public String login(Model model){
         model.addAttribute("data", "Hello !");
         return "/login/login";
     }
 
+    /**
+     * 접근 거절
+     * @param exception
+     * @param model
+     * @return
+     */
     @GetMapping("/denied")
     public String accessDenied(@RequestParam(value = "exception",required = false) String exception,
                                Model model){

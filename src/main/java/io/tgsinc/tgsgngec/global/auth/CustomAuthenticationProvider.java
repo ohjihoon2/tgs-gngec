@@ -1,6 +1,6 @@
 package io.tgsinc.tgsgngec.global.auth;
 
-import io.tgsinc.tgsgngec.domain.admin.service.LoginService;
+import io.tgsinc.tgsgngec.global.common.service.LoginService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;

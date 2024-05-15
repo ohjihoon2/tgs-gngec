@@ -1,7 +1,7 @@
 package io.tgsinc.tgsgngec.domain.admin.service.impl;
 
-import io.tgsinc.tgsgngec.domain.admin.entity.Users;
-import io.tgsinc.tgsgngec.domain.admin.repository.AdminRepository;
+import io.tgsinc.tgsgngec.global.common.entity.UsersEntity;
+import io.tgsinc.tgsgngec.global.common.repository.LoginRepository;
 import io.tgsinc.tgsgngec.domain.admin.service.AdminService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -13,17 +13,21 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class AdminServiceImpl implements AdminService {
 
-    private final AdminRepository adminRepository;
+    private final LoginRepository loginRepository;
     private final PasswordEncoder passwordEncoder;
 
+    /**
+     * 유저 생성 테스트 코드
+     * @param paramMap
+     */
     @Override
-    public void addAdmin(Map<String, Object> paramMap) {
+    public void addUser(Map<String, Object> paramMap) {
 
-        Users user = Users.builder()
+        UsersEntity user = UsersEntity.builder()
                 .id(paramMap.get("id").toString())
                 .pswdEncpt(passwordEncoder.encode((paramMap.get("pswd").toString())))
                 .role(paramMap.get("role").toString())
                 .build();
-        adminRepository.save(user);
+        loginRepository.save(user);
     }
 }

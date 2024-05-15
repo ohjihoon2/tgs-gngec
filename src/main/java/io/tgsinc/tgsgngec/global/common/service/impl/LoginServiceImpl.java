@@ -1,9 +1,9 @@
-package io.tgsinc.tgsgngec.domain.admin.service.impl;
+package io.tgsinc.tgsgngec.global.common.service.impl;
 
-import io.tgsinc.tgsgngec.domain.admin.dto.UserDetailsDTO;
-import io.tgsinc.tgsgngec.domain.admin.entity.Users;
-import io.tgsinc.tgsgngec.domain.admin.repository.AdminRepository;
-import io.tgsinc.tgsgngec.domain.admin.service.LoginService;
+import io.tgsinc.tgsgngec.global.common.dto.UserDetailsDTO;
+import io.tgsinc.tgsgngec.global.common.entity.UsersEntity;
+import io.tgsinc.tgsgngec.global.common.repository.LoginRepository;
+import io.tgsinc.tgsgngec.global.common.service.LoginService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -13,11 +13,11 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class LoginServiceImpl implements LoginService {
 
-    private final AdminRepository adminRepository;
+    private final LoginRepository loginRepository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Users user = adminRepository.findById(username);
+        UsersEntity user = loginRepository.findById(username);
 
         if (user == null) throw new UsernameNotFoundException("User not exist");
 

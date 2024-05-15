@@ -1,7 +1,6 @@
-package io.tgsinc.tgsgngec.domain.admin.service;
+package io.tgsinc.tgsgngec.global.common.service;
 
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.stereotype.Service;
 
 public interface LoginService extends UserDetailsService {
 

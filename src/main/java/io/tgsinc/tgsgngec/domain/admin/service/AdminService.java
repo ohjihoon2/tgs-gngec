@@ -5,5 +5,5 @@ import org.springframework.stereotype.Service;
 import java.util.Map;
 
 public interface AdminService {
-    void addAdmin(Map<String, Object> paramMap);
+    void addUser(Map<String, Object> paramMap);
 }
