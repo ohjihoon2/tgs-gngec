@@ -13,7 +13,7 @@ public class UsersEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "uidx")
+    @Column(name = "USR_IDX")
     private Long uidx;
 
     @Column(nullable = false)

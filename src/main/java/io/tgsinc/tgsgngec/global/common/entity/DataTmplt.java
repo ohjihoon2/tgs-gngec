@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.Comment;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -13,11 +14,11 @@ import java.util.Date;
 @AllArgsConstructor
 @Table(name = "data_tmplt")
 @Comment("자료 서식")
-public class DataTmpltEntity {
+public class DataTmplt {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "IDX")
-    @Comment("IDX")
+    @Column(name = "DATA_TMPLT_IDX")
+    @Comment("자료 서식 IDX")
     private Long idx;
 
     @Column(name = "TYPE")
@@ -42,7 +43,7 @@ public class DataTmpltEntity {
 
     @Column(name = "REG_DT")
     @Comment("등록일시")
-    private Date regDt;
+    private LocalDateTime regDt;
 
     @Column(name = "REG_UIDX")
     @Comment("등록UIDX")

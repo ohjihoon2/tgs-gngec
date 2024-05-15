@@ -1,10 +1,13 @@
 package io.tgsinc.tgsgngec.global.common.entity;
 
+import io.tgsinc.tgsgngec.global.common.enums.RsrchFldEnum;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.Comment;
 
-import java.util.Date;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -13,12 +16,12 @@ import java.util.Date;
 @AllArgsConstructor
 @Table(name = "rsrch_asmt_pssrp")
 @Comment("연구과제공모")
-public class RsrchAsmtPssrpEntity {
+public class RsrchAsmtPssrp {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "IDX")
-    @Comment("IDX")
+    @Column(name = "RSRCH_ASMT_PSSRP_IDX")
+    @Comment("연구과제공모IDX")
     private Long idx;
 
     @Column(name = "ASMT_NM")
@@ -46,22 +49,21 @@ public class RsrchAsmtPssrpEntity {
     private String picTelno;
 
     @Column(name = "RSRCH_BGNG_DT")
-    @Temporal(TemporalType.TIMESTAMP)
     @Comment("연구시작일시")
-    private Date rsrchBgngDt;
+    private LocalDateTime rsrchBgngDt;
 
     @Column(name = "RSRCH_END_DT")
-    @Temporal(TemporalType.TIMESTAMP)
     @Comment("연구종료일시")
-    private Date rsrchEndDt;
+    private LocalDateTime rsrchEndDt;
 
     @Column(name = "EXPECT_RSRCH_CT")
     @Comment("예상연구비용")
     private Integer expectRsrchCt;
 
     @Column(name = "RSRCH_FLD_ARRAY")
+    @Enumerated(EnumType.STRING)
     @Comment("연구분야배열")
-    private String rsrchFldArray;
+    private RsrchFldEnum rsrchFldArray;
 
     @Column(name = "WSTWT_PRCS_ARRAY")
     @Comment("하폐수처리배열")
@@ -114,4 +116,7 @@ public class RsrchAsmtPssrpEntity {
     @Column(name = "PSWD")
     @Comment("패스워드")
     private String pswd;
+
+    @OneToMany(mappedBy = "rsrchAsmtPssrp")
+    private List<RsrchRbprsnAply> rsrchRbprsnAplys = new ArrayList<>();
 }

@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.Comment;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -13,12 +14,12 @@ import java.util.Date;
 @AllArgsConstructor
 @Table(name = "rsrch_asmt")
 @Comment("연구 과제")
-public class RrsrchAsmtEntity {
+public class RrsrchAsmt {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "IDX")
-    @Comment("IDX")
+    @Column(name = "RSRCH_ASMT_IDX")
+    @Comment("연구 과제 IDX")
     private Long idx;
 
     @Column(name = "RSRCH_YR")
@@ -46,18 +47,16 @@ public class RrsrchAsmtEntity {
     private Long orgnlFileIdx;
 
     @Column(name = "REG_DT")
-    @Temporal(TemporalType.TIMESTAMP)
     @Comment("등록일시")
-    private Date regDt;
+    private LocalDateTime regDt;
 
     @Column(name = "REG_UIDX")
     @Comment("등록UIDX")
     private Long regUidx;
 
     @Column(name = "MDFCN_DT")
-    @Temporal(TemporalType.TIMESTAMP)
     @Comment("수정일시")
-    private Date mdfcnDt;
+    private LocalDateTime mdfcnDt;
 
     @Column(name = "MDFCN_UIDX")
     @Comment("수정UIDX")

@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.Comment;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -13,12 +14,12 @@ import java.util.Date;
 @AllArgsConstructor
 @Table(name = "rsrch_rbprsn_pssrp")
 @Comment("연구 책임자 공모")
-public class RsrchRbprsnPssrpEntity {
+public class RsrchRbprsnPssrp {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "IDX")
-    @Comment("IDX")
+    @Column(name = "RSRCH_RBPRSN_PSSRP_IDX")
+    @Comment("연구 책임자 공모 IDX")
     private Long idx;
 
     @Column(name = "ASMT_NO")
@@ -30,14 +31,12 @@ public class RsrchRbprsnPssrpEntity {
     private String asmtNm;
 
     @Column(name = "RSRCH_BGNG_DT")
-    @Temporal(TemporalType.TIMESTAMP)
     @Comment("연구시작일시")
-    private Date rsrchBgngDt;
+    private LocalDateTime rsrchBgngDt;
 
     @Column(name = "RSRCH_END_DT")
-    @Temporal(TemporalType.TIMESTAMP)
     @Comment("연구종료일시")
-    private Date rsrchEndDt;
+    private LocalDateTime rsrchEndDt;
 
     @Column(name = "MXMM_PTCT_NMPR")
     @Comment("최대참여인원")
@@ -48,14 +47,12 @@ public class RsrchRbprsnPssrpEntity {
     private int waitNmpr;
 
     @Column(name = "APLY_BGNG_DT")
-    @Temporal(TemporalType.TIMESTAMP)
     @Comment("신청시작일시")
-    private Date aplyBgngDt;
+    private LocalDateTime aplyBgngDt;
 
     @Column(name = "APLY_END_DT")
-    @Temporal(TemporalType.TIMESTAMP)
     @Comment("신청종료일시")
-    private Date aplyEndDt;
+    private LocalDateTime aplyEndDt;
 
     @Column(name = "RSRCH_PJTCO")
     @Comment("연구사업비")

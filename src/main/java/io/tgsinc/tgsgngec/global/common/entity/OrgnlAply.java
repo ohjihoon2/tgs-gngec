@@ -3,6 +3,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.Comment;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -12,12 +13,12 @@ import java.util.Date;
 @AllArgsConstructor
 @Table(name = "orgnl_aply")
 @Comment("원본 신청")
-public class OrgnlAplyEntity {
+public class OrgnlAply {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "IDX")
-    @Comment("IDX")
+    @Column(name = "ORGNL_APLY_IDX")
+    @Comment("원본 신청 IDX")
     private Long idx;
 
     @Column(name = "RSRCH_ASMT_IDX")
@@ -49,8 +50,7 @@ public class OrgnlAplyEntity {
     private Character sndngYn;
 
     @Column(name = "REG_DT")
-    @Temporal(TemporalType.TIMESTAMP)
     @Comment("등록일시")
-    private Date regDt;
+    private LocalDateTime regDt;
 
 }

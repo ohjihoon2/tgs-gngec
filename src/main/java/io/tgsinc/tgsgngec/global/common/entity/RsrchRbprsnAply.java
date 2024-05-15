@@ -10,17 +10,18 @@ import org.hibernate.annotations.Comment;
 @AllArgsConstructor
 @Table(name = "rsrch_rbprsn_aply")
 @Comment("연구 책임자 신청")
-public class RsrchRbprsnAplyEntity {
+public class RsrchRbprsnAply {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "IDX")
-    @Comment("IDX")
+    @Column(name = "RSRCH_RBPRSN_APLY_IDX")
+    @Comment("연구 책임자 신청 IDX")
     private Long idx;
 
-    @Column(name = "RSRCH_RBPRSN_PSSRP_IDX")
-    @Comment("연구책임자공모IDX")
-    private Long rsrchRbprsnPssrpIdx;
+    @Comment("연구 과제 공모 IDX")
+    @ManyToOne
+    @JoinColumn(name = "RSRCH_ASMT_PSSRP_IDX")
+    private RsrchAsmtPssrp rsrchAsmtPssrp;
 
     @Column(name = "APLY_STTS")
     @Comment("신청상태")
@@ -58,4 +59,13 @@ public class RsrchRbprsnAplyEntity {
     @Comment("패스워드")
     private String pswd;
 
+
+    /**
+     * 연관 관계 편의 메서드 (순수 객체 상태를 고려해서 항상 양쪽에 값 설정)
+     * @param rsrchAsmtPssrp
+     */
+    public void changeRsrchAsmtPssrp(RsrchAsmtPssrp rsrchAsmtPssrp) {
+        this.rsrchAsmtPssrp = rsrchAsmtPssrp;
+        rsrchAsmtPssrp.getRsrchRbprsnAplys().add(this);
+    }
 }
