@@ -15,16 +15,6 @@ public class AdmTestController {
 
     private final AdminService adminService;
 
-    @GetMapping("/adm")
-    public String adminMain(){
-        return "/admin/main";
-    }
-
-    @GetMapping("/adm/test")
-    public String adminTest(){
-        return "/admin/test";
-    }
-
     @PostMapping("/add")
     public void add(@RequestBody Map<String, Object> paramMap){
 
