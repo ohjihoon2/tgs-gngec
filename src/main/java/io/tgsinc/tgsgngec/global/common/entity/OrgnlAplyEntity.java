@@ -1,10 +1,15 @@
 package io.tgsinc.tgsgngec.global.common.entity;
 import jakarta.persistence.*;
+import lombok.*;
 import org.hibernate.annotations.Comment;
 
 import java.util.Date;
 
 @Entity
+@Getter
+@Builder
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
 @Table(name = "orgnl_aply")
 @Comment("원본 신청")
 public class OrgnlAplyEntity {

@@ -1,8 +1,13 @@
 package io.tgsinc.tgsgngec.global.common.entity;
 import jakarta.persistence.*;
+import lombok.*;
 import org.hibernate.annotations.Comment;
 
 @Entity
+@Getter
+@Builder
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
 @Table(name = "rsrch_rbprsn_aply")
 @Comment("연구 책임자 신청")
 public class RsrchRbprsnAplyEntity {

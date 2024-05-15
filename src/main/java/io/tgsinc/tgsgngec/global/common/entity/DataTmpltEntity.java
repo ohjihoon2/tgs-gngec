@@ -1,11 +1,16 @@
 package io.tgsinc.tgsgngec.global.common.entity;
 
 import jakarta.persistence.*;
+import lombok.*;
 import org.hibernate.annotations.Comment;
 
 import java.util.Date;
 
 @Entity
+@Getter
+@Builder
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
 @Table(name = "data_tmplt")
 @Comment("자료 서식")
 public class DataTmpltEntity {
