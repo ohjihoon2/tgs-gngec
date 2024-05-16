@@ -9,3 +9,16 @@ spring:
     mode: HTML
     cache: false # default true
 
+  # 파일 크기
+  servlet:
+    multipart:
+      # total file size cannot exceed 10MB.
+      max-file-size: 10MB
+      # total request size for a multipart/form-data cannot exceed 20MB.
+      max-request-size: 20MB
+
+
+# 파일 관련
+resources:
+  location: D:/upload/@project.name@/
+  uri_path: /images/**

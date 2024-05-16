@@ -1,9 +1,9 @@
 package io.tgsinc.tgsgngec.global.common.repository;
 
-import io.tgsinc.tgsgngec.global.common.entity.UsersEntity;
+import io.tgsinc.tgsgngec.global.common.entity.Users;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface LoginRepository extends JpaRepository<UsersEntity, Long> {
+public interface LoginRepository extends JpaRepository<Users, Long> {
 
-    UsersEntity findById(String username);
+    Users findById(String username);
 }

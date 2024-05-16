@@ -1,7 +1,7 @@
 package io.tgsinc.tgsgngec.global.common.service.impl;
 
 import io.tgsinc.tgsgngec.global.common.dto.UserDetailsDTO;
-import io.tgsinc.tgsgngec.global.common.entity.UsersEntity;
+import io.tgsinc.tgsgngec.global.common.entity.Users;
 import io.tgsinc.tgsgngec.global.common.repository.LoginRepository;
 import io.tgsinc.tgsgngec.global.common.service.LoginService;
 import lombok.RequiredArgsConstructor;
@@ -17,7 +17,7 @@ public class LoginServiceImpl implements LoginService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        UsersEntity user = loginRepository.findById(username);
+        Users user = loginRepository.findById(username);
 
         if (user == null) throw new UsernameNotFoundException("User not exist");
 

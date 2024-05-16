@@ -1,6 +1,6 @@
 package io.tgsinc.tgsgngec.domain.admin.service.impl;
 
-import io.tgsinc.tgsgngec.global.common.entity.UsersEntity;
+import io.tgsinc.tgsgngec.global.common.entity.Users;
 import io.tgsinc.tgsgngec.global.common.repository.LoginRepository;
 import io.tgsinc.tgsgngec.domain.admin.service.AdminService;
 import lombok.RequiredArgsConstructor;
@@ -23,7 +23,7 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public void addUser(Map<String, Object> paramMap) {
 
-        UsersEntity user = UsersEntity.builder()
+        Users user = Users.builder()
                 .id(paramMap.get("id").toString())
                 .pswdEncpt(passwordEncoder.encode((paramMap.get("pswd").toString())))
                 .role(paramMap.get("role").toString())
