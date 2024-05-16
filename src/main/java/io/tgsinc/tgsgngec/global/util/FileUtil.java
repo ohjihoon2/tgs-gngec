@@ -1,8 +1,8 @@
 package io.tgsinc.tgsgngec.global.util;
 
 import io.tgsinc.tgsgngec.global.common.dto.file.FileDTO;
+import io.tgsinc.tgsgngec.global.common.entity.file.FileGroup;
 import io.tgsinc.tgsgngec.global.common.entity.file.FileInfo;
-import io.tgsinc.tgsgngec.global.common.entity.file.Files;
 import io.tgsinc.tgsgngec.global.common.repository.FileInfoRepository;
 import io.tgsinc.tgsgngec.global.common.repository.FileRepository;
 import io.tgsinc.tgsgngec.global.exception.CustomErrorCode;
@@ -58,7 +58,7 @@ public class FileUtil {
 
         if(attachFileIdx != 0 ){
             //todo sn 최대값 가져오기 수정중
-//            cnt = fileRepository.findTopSnByFileIdx(attachFileIdx);
+            cnt = fileRepository.findTopSnByIdx(attachFileIdx);
         }
 
         /* 파일 개수만큼 forEach 실행 */
@@ -102,19 +102,19 @@ public class FileUtil {
      * @param fileList
      * @return
      */
-    public FileInfo saveFile(List<FileDTO> fileList) {
+    public FileGroup saveFile(List<FileDTO> fileList) {
         Long idx = 0L;
 
-        FileInfo fileInfo = null;
-        List<Files> files = new ArrayList<>();
+        FileGroup fileGroup = null;
+        List<FileInfo> files = new ArrayList<>();
         if (CollectionUtils.isEmpty(fileList) == false) {
 
-            fileInfo = FileInfo.builder().build();
-            fileInfoRepository.save(fileInfo);
+            fileGroup = FileGroup.builder().build();
+            fileInfoRepository.save(fileGroup);
 
             for (FileDTO fileDTO : fileList) {
-                Files file = fileDTO.toEntity();
-                file.updateFileInfo(fileInfo);
+                FileInfo file = fileDTO.toEntity();
+                file.updateFileGroup(fileGroup);
 
                 files.add(file);
             }
@@ -122,7 +122,7 @@ public class FileUtil {
             fileRepository.saveAll(files);
         }
 
-        return fileInfo;
+        return fileGroup;
     }
 
     //todo 파일 다운로드 처리

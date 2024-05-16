@@ -9,7 +9,7 @@ import lombok.*;
 public class FileInfoDTO {
 
     /**
-     * 파일 정보 idx
+     * 파일 그룹 idx
      */
     private Long idx;
 

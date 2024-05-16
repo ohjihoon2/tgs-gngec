@@ -1,6 +1,5 @@
 package io.tgsinc.tgsgngec.global.common.entity;
-import io.tgsinc.tgsgngec.global.common.entity.file.FileInfo;
-import io.tgsinc.tgsgngec.global.common.entity.file.Files;
+import io.tgsinc.tgsgngec.global.common.entity.file.FileGroup;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.Comment;
@@ -57,9 +56,9 @@ public class RsrchRbprsnAply {
      *  단방향 관계
      */
     @Comment("첨부파일IDX")
-    @OneToOne
-    @JoinColumn(name = "FILE_INFO_IDX")
-    private FileInfo fileInfo;
+    @OneToOne(fetch = FetchType.LAZY , cascade = CascadeType.ALL,orphanRemoval = false)
+    @JoinColumn(name = "FILE_GROUP_IDX")
+    private FileGroup fileGroup;
 
     @Column(name = "PSWD")
     @Comment("패스워드")

@@ -1,11 +1,12 @@
 package io.tgsinc.tgsgngec.global.common.entity;
 
-import io.tgsinc.tgsgngec.global.common.entity.file.FileInfo;
+import io.tgsinc.tgsgngec.global.common.entity.file.FileGroup;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.Comment;
 
-import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -15,6 +16,12 @@ import java.time.LocalDateTime;
 @Table(name = "rsrch_asmt")
 @Comment("연구 과제")
 public class RsrchAsmt {
+//        extends BaseEntity {
+
+    public RsrchAsmt(String rsrchYr, String rsrchNm) {
+        this.rsrchYr = rsrchYr;
+        this.rsrchNm = rsrchNm;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,29 +45,15 @@ public class RsrchAsmt {
     @Comment("책임자명")
     private String rbprsnNm;
 
-    @Column(name = "SUMRY_FILE_IDX",nullable = false)
-    @Comment("요약파일IDX")
-    @OneToOne(fetch = FetchType.LAZY , cascade = CascadeType.ALL,orphanRemoval = false)
-    private FileInfo fileInfo;
+//    @Comment("요약파일IDX")
+//    @OneToOne(fetch = FetchType.LAZY , cascade = CascadeType.ALL, mappedBy = "idx",optional = false)
+//    private FileGroup sumryFileIdx;
+//
+//    @Comment("원본파일IDX")
+//    @OneToOne(fetch = FetchType.LAZY , cascade = CascadeType.ALL, mappedBy = "idx",optional = false)
+//    private FileGroup orgnlFileIdx;
 
-    @Column(name = "ORGNL_FILE_IDX",columnDefinition = "원본파일IDX")
-    @Comment("원본파일IDX")
-    private Long orgnlFileIdx;
-
-    @Column(name = "REG_DT")
-    @Comment("등록일시")
-    private LocalDateTime regDt;
-
-    @Column(name = "REG_UIDX")
-    @Comment("등록UIDX")
-    private Long regUidx;
-
-    @Column(name = "MDFCN_DT")
-    @Comment("수정일시")
-    private LocalDateTime mdfcnDt;
-
-    @Column(name = "MDFCN_UIDX")
-    @Comment("수정UIDX")
-    private Long mdfcnUidx;
+    @OneToMany(mappedBy = "rsrchAsmt")
+    private List<OrgnlAply> OrgnlAplys = new ArrayList<>();
 
 }

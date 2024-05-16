@@ -14,7 +14,7 @@ import java.util.Date;
 @AllArgsConstructor
 @Table(name = "data_tmplt")
 @Comment("자료 서식")
-public class DataTmplt {
+public class DataTmplt extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "DATA_TMPLT_IDX")
@@ -41,11 +41,4 @@ public class DataTmplt {
     @Comment("첨부파일IDX")
     private Long atchFileIdx;
 
-    @Column(name = "REG_DT")
-    @Comment("등록일시")
-    private LocalDateTime regDt;
-
-    @Column(name = "REG_UIDX")
-    @Comment("등록UIDX")
-    private Long regUidx;
 }

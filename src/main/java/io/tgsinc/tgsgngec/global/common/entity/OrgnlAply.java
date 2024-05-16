@@ -21,9 +21,10 @@ public class OrgnlAply {
     @Comment("원본 신청 IDX")
     private Long idx;
 
-    @Column(name = "RSRCH_ASMT_IDX")
     @Comment("연구과제IDX")
-    private Long rsrchAsmtIdx;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "RSRCH_ASMT_IDX")
+    private RsrchAsmt rsrchAsmt;
 
     @Column(name = "NM", length = 20)
     @Comment("이름")
@@ -49,8 +50,12 @@ public class OrgnlAply {
     @Comment("발송여부")
     private Character sndngYn;
 
-    @Column(name = "REG_DT")
-    @Comment("등록일시")
-    private LocalDateTime regDt;
-
+    /**
+     * 연관 관계 편의 메서드 (순수 객체 상태를 고려해서 항상 양쪽에 값 설정)
+     * @param rsrchAsmt
+     */
+    public void changeRsrchAsmt(RsrchAsmt rsrchAsmt) {
+        this.rsrchAsmt = rsrchAsmt;
+        rsrchAsmt.getOrgnlAplys().add(this);
+    }
 }

@@ -1,6 +1,6 @@
 package io.tgsinc.tgsgngec.global.common.dto.file;
 
-import io.tgsinc.tgsgngec.global.common.entity.file.Files;
+import io.tgsinc.tgsgngec.global.common.entity.file.FileInfo;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -15,7 +15,7 @@ public class FileDTO {
 
     /**
      * TODO 체크 예정
-     * 파일 정보 idx
+     * 파일 그룹 idx
      */
     private Long fileInfoIdx;
 
@@ -37,8 +37,8 @@ public class FileDTO {
 
     private LocalDateTime crtDt;
 
-    public Files toEntity() {
-        return Files.builder()
+    public FileInfo toEntity() {
+        return FileInfo.builder()
 //                .fileInfoIdx(fileInfoIdx)
                 .sn(sn)
                 .orgnlNm(orgnlNm)

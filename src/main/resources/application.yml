@@ -17,6 +17,11 @@ spring:
       # total request size for a multipart/form-data cannot exceed 20MB.
       max-request-size: 20MB
 
+  #JPA Pageable global 설정
+  data:
+    web:
+      pageable:
+        default-page-size: 10
 
 # 파일 관련
 resources:
