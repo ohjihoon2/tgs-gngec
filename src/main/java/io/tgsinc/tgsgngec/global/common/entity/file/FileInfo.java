@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.Comment;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Getter
 @Builder
@@ -17,5 +20,9 @@ public class FileInfo {
     @Column(name = "FILE_INFO_IDX")
     @Comment("파일 정보 IDX")
     private Long idx;
+
+    @OneToMany(mappedBy = "files")
+    List<Files> filesList = new ArrayList<>();
+
 
 }

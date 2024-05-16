@@ -1,5 +1,6 @@
 package io.tgsinc.tgsgngec.global.common.entity;
 
+import io.tgsinc.tgsgngec.global.common.entity.file.FileInfo;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.Comment;
@@ -37,11 +38,12 @@ public class RsrchAsmt {
     @Comment("책임자명")
     private String rbprsnNm;
 
-    @Column(name = "SUMRY_FILE_IDX")
+    @Column(name = "SUMRY_FILE_IDX",nullable = false)
     @Comment("요약파일IDX")
-    private Long sumryFileIdx;
+    @OneToOne(fetch = FetchType.LAZY , cascade = CascadeType.ALL,orphanRemoval = false)
+    private FileInfo fileInfo;
 
-    @Column(name = "ORGNL_FILE_IDX")
+    @Column(name = "ORGNL_FILE_IDX",columnDefinition = "원본파일IDX")
     @Comment("원본파일IDX")
     private Long orgnlFileIdx;
 
