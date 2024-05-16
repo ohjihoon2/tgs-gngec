@@ -32,15 +32,7 @@ public class RsrchAsmtServiceImpl implements RsrchAsmtService {
 
 
         return  rsrchAsmtRepository.findAll(spec,pageable)
-                .map(rsrchAsmt -> new RsrchAsmtDTO(
-                rsrchAsmt.getIdx(),
-                rsrchAsmt.getRsrchYr(),
-                rsrchAsmt.getRsrchNm(),
-                rsrchAsmt.getCntrNm(),
-                rsrchAsmt.getRbprsnNm(),
-//                rsrchAsmt.getSumryFileIdx(),
-//                rsrchAsmt.getOrgnlFileIdx(),
-                rsrchAsmt.getOrgnlAplys()));
+                .map(RsrchAsmtDTO::new);
 
     }
 }

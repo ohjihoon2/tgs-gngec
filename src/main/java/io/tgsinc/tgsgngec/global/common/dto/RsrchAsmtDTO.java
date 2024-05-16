@@ -2,10 +2,8 @@ package io.tgsinc.tgsgngec.global.common.dto;
 
 import io.tgsinc.tgsgngec.global.common.entity.BaseEntity;
 import io.tgsinc.tgsgngec.global.common.entity.OrgnlAply;
-import io.tgsinc.tgsgngec.global.common.entity.file.FileGroup;
-import jakarta.persistence.*;
+import io.tgsinc.tgsgngec.global.common.entity.RsrchAsmt;
 import lombok.*;
-import org.hibernate.annotations.Comment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,12 +23,17 @@ public class RsrchAsmtDTO extends BaseEntity {
 
     private String rbprsnNm;
 
-//    @Comment("요약파일IDX")
 //    private FileGroup sumryFileIdx;
-//
-//    @Comment("원본파일IDX")
 //    private FileGroup orgnlFileIdx;
 
-    private List<OrgnlAply> OrgnlAplys = new ArrayList<>();
+    private List<OrgnlAply> orgnlAplys = new ArrayList<>();
 
+    public RsrchAsmtDTO(RsrchAsmt rsrchAsmt) {
+        this.idx = rsrchAsmt.getIdx();
+        this.rsrchYr = rsrchAsmt.getRsrchYr();
+        this.rsrchNm = rsrchAsmt.getRsrchNm();
+        this.cntrNm = rsrchAsmt.getCntrNm();
+        this.rbprsnNm = rsrchAsmt.getRbprsnNm();
+        this.orgnlAplys = rsrchAsmt.getOrgnlAplys();
+    }
 }
