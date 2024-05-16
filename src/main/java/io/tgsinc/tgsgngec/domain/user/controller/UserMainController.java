@@ -11,6 +11,6 @@ public class UserMainController {
     @GetMapping("/")
     public String main(HttpServletRequest request, Model model){
 
-        return "/page/user/main/main";
+        return "/page/user/main/index";
     }
 }

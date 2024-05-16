@@ -60,6 +60,10 @@ public class RsrchAsmtPssrp {
     @Comment("예상연구비용")
     private Integer expectRsrchCt;
 
+    //TODO
+    // Array로 끝나는 컬럼들은 List 로 받아서 하나의 문자열로 변경 작업 해야함
+    // enum type을 사용여부 미정 
+
     @Column(name = "RSRCH_FLD_ARRAY")
     @Enumerated(EnumType.STRING)
     @Comment("연구분야배열")
