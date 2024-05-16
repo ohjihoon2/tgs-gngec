@@ -1,4 +1,4 @@
-package io.tgsinc.tgsgngec.global.common.search;
+package io.tgsinc.tgsgngec.domain.admin.search;
 
 
 import lombok.Getter;

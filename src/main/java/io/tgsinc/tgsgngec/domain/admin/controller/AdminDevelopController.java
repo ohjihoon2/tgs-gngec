@@ -1,11 +1,9 @@
 package io.tgsinc.tgsgngec.domain.admin.controller;
 
 import io.tgsinc.tgsgngec.global.common.dto.RsrchAsmtDTO;
-import io.tgsinc.tgsgngec.global.common.entity.RsrchAsmt;
 import io.tgsinc.tgsgngec.global.common.repository.RsrchAsmtRepository;
-import io.tgsinc.tgsgngec.global.common.search.ResearchSearch;
+import io.tgsinc.tgsgngec.domain.admin.search.ResearchSearch;
 import io.tgsinc.tgsgngec.global.common.service.RsrchAsmtService;
-import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -17,8 +15,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import java.util.List;
 
 /**
  * AdminDevelopController

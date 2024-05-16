@@ -1,10 +1,10 @@
 package io.tgsinc.tgsgngec.global.common.service.impl;
 
-import io.tgsinc.tgsgngec.global.common.RsrchAsmtSpec;
+import io.tgsinc.tgsgngec.global.common.spec.RsrchAsmtSpec;
 import io.tgsinc.tgsgngec.global.common.dto.RsrchAsmtDTO;
 import io.tgsinc.tgsgngec.global.common.entity.RsrchAsmt;
 import io.tgsinc.tgsgngec.global.common.repository.RsrchAsmtRepository;
-import io.tgsinc.tgsgngec.global.common.search.ResearchSearch;
+import io.tgsinc.tgsgngec.domain.admin.search.ResearchSearch;
 import io.tgsinc.tgsgngec.global.common.service.RsrchAsmtService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
