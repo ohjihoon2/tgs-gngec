@@ -34,3 +34,34 @@ spring:
       enabled: true
     thymeleaf:
       cache: false
+
+# 로그 설정
+logging:
+  level:  # 적용할 곳과 레벨을 지정
+    org.springframework: info
+    io.tgsinc.tgsgngec : debug
+    jdbc: off
+    jdbc.audit: off
+    jdbc.resultset : off
+    jdbc.connection: off
+    jdbc.sqltiming: debug
+    jdbc.resultsettable: info
+  pattern:
+    console: '%d %5p [%c] %m%n'
+
+  # 로그 파일에 대한 명시입니다. 주의점 name과 path중 하나만 사용해야합니다. path 사용을 권장
+  file:
+    # 로그 파일의 위치 절대 경로
+    path: D:/logs/gngec.log
+    ## 로그 파일의 이름
+    # name: '%d{yyyy-MM-dd}-%i.log'
+
+  logback:
+    rollingpolicy:
+      max-history: 30
+      # 로그 파일의 최대 크기이며, 크기가 넘어가면 새로운 로그파일 작성
+      max-file-size: 10MB
+      # 로그 파일의 이름을 설정하는 패턴
+      file-name-pattern: 'D:/logs/gngec.log/%d{yyyy-MM-dd}-%i.log'
+      # 로그 파일의 총 크기이며, 넘어갈 시 가장 오래된 로그 파일 삭제
+      total-size-cap: 1000MB
