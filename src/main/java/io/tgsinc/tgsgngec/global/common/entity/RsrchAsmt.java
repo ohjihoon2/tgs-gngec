@@ -5,7 +5,6 @@ import lombok.*;
 import org.hibernate.annotations.Comment;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Entity
 @Getter
@@ -14,7 +13,7 @@ import java.util.Date;
 @AllArgsConstructor
 @Table(name = "rsrch_asmt")
 @Comment("연구 과제")
-public class RrsrchAsmt {
+public class RsrchAsmt {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -1,4 +1,6 @@
 package io.tgsinc.tgsgngec.global.common.entity;
+import io.tgsinc.tgsgngec.global.common.entity.file.FileInfo;
+import io.tgsinc.tgsgngec.global.common.entity.file.Files;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.Comment;
@@ -19,7 +21,7 @@ public class RsrchRbprsnAply {
     private Long idx;
 
     @Comment("연구 과제 공모 IDX")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "RSRCH_ASMT_PSSRP_IDX")
     private RsrchAsmtPssrp rsrchAsmtPssrp;
 
@@ -33,7 +35,7 @@ public class RsrchRbprsnAply {
 
     @Column(name = "ClBR_RSRCH_INST")
     @Comment("공동연구기관")
-    private String clbrRsrchInst;
+    private String clbrRschInst;
 
     @Column(name = "JBPS")
     @Comment("직위")
@@ -51,9 +53,13 @@ public class RsrchRbprsnAply {
     @Comment("전화번호")
     private String telno;
 
-    @Column(name = "ATCH_FILE_IDX")
+    /**
+     *  단방향 관계
+     */
     @Comment("첨부파일IDX")
-    private Long atchFileIdx;
+    @OneToOne
+    @JoinColumn(name = "FILE_INFO_IDX")
+    private FileInfo fileInfo;
 
     @Column(name = "PSWD")
     @Comment("패스워드")
@@ -68,4 +74,5 @@ public class RsrchRbprsnAply {
         this.rsrchAsmtPssrp = rsrchAsmtPssrp;
         rsrchAsmtPssrp.getRsrchRbprsnAplys().add(this);
     }
+
 }
